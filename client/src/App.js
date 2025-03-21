@@ -1,23 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import "./App.css";
 
 function App() {
+  const [move, setMove] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <motion.div
+        className="box"
+        animate={{ x: move ? 200 : 0 }}
+        transition={{ type: "spring", stiffness: 100 }}
+      />
+      <button onClick={() => setMove(!move)}>Click for Animation</button>
     </div>
   );
 }
