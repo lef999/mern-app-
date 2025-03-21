@@ -25,11 +25,13 @@ app.get('/api/test', (req, res) => {
 });
 
 // Serve frontend in production
+// Serve frontend in production
 if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, 'build')));
+    const path = require('path');
+    app.use(express.static(path.join(__dirname, 'client/build')));
   
     app.get('*', (req, res) => {
-      res.sendFile(path.join(__dirname, 'build', 'index.html'));
+      res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
     });
   }
   
